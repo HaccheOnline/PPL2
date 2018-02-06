@@ -9,13 +9,6 @@
 /**  @var $block \Magento\Checkout\Block\Cart\Grid */
 
 ?>
-
-<?php
-header("Content-Type:application/json");
-$data = json_decode(file_get_contents('php://input'), true);
-print_r($data);
-print_r('test');
-?>
 <?php $mergedCells = ($this->helper('Magento\Tax\Helper\Data')->displayCartBothPrices() ? 2 : 1); ?>
 <?= $block->getChildHtml('form_before') ?>
 <form action="<?= /* @escapeNotVerified */ $block->getUrl('checkout/cart/updatePost') ?>"

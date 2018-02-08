@@ -52,7 +52,7 @@ $result = curl_exec($ch1);
 //close connection
 curl_close($ch1);
 
-$json1 = json_decode($result);
+$json1 = json_decode($result, true);
 echo $json1;
 ?>
 

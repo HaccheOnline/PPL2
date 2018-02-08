@@ -39,12 +39,11 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 
 
 
-  if(Mage::getSingleton('customer/session')->isLoggedIn()) {
-    $customerData = Mage::getSingleton('customer/session')->getCustomer();
-     echo $customerData->getId();
-}
-?>
 
+?>
+<?php $sessionId = Mage::getSingleton("core/session")->getEncryptedSessionId();
+echo $sessionId;
+?>
 
 
 

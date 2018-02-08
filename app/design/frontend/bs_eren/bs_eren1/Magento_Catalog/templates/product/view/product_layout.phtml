@@ -35,6 +35,17 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   $json = (json_decode($output, true));     
   //echo $json;
   //echo $output;
+  $userData = array("username" => "admin@hacche.online", "password" => "mahler13hol");
+  $ch = curl_init("http://ppl2.hacche.online/rest/V1/integration/admin/token");
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($userData));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json", "Content-Lenght: " . strlen(json_encode($userData))));
+
+  $token = curl_exec($ch);
+
+
+
 
   $ch1 = curl_init('http://ppl2.hacche.online/rest/V1/customers/me');
 curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
@@ -45,6 +56,7 @@ curl_setopt($ch1, CURLOPT_HTTPHEADER, array(
 curl_setopt($ch1, CURLOPT_COOKIE, 'PHPSESSID=' . $_COOKIE['PHPSESSID']);
 curl_setopt($ch1, CURLOPT_TIMEOUT, 5);
 curl_setopt($ch1, CURLOPT_CONNECTTIMEOUT, 5);
+curl_setopt($ch1, CURLOPT_HTTPHEADER, array("Content-Type: application/json", "Authorization: Bearer " . json_decode($token)));
 
 //execute post
 $result = curl_exec($ch1);

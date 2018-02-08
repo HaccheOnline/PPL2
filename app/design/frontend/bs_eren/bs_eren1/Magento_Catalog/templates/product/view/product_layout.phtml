@@ -36,14 +36,7 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   $json = (json_decode($output, true));     
   //echo $json;
   //echo $output;
-  $om = \Magento\Framework\App\ObjectManager::getInstance();
-  $customerSession = $om->get('Magento\Customer\Model\Session');
-  if($customerSession->isLoggedIn()) {
-      echo   $customerSession->getCustomer()->getId()."<br/>";  // get Customer Id
-      echo   $customerSession->getCustomer()->getName()."<br/>";  // get  Full Name
-      echo   $customerSession->getCustomer()->getEmail()."<br/>"; // get Email Name
-      echo   $customerSession->getCustomer()->getGroupId()."<br/>";  // get Customer Group Id
-    }  
+
  
 
 

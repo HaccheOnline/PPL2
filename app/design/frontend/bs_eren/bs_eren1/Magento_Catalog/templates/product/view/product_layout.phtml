@@ -35,7 +35,7 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   $json = (json_decode($output, true));     
   //echo $json;
   //echo $output;
-  
+  $om = \Magento\Framework\App\ObjectManager::getInstance();
   $customerSession = $om->get('Magento\Customer\Model\Session');
   if($customerSession->isLoggedIn()) {
       echo   $customerSession->getCustomer()->getId()."<br/>";  // get Customer Id

@@ -53,8 +53,8 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   //close connection
   curl_close($ch);
   
-  $json = json_decode($result);
-  echo $json['id'];
+  $json = json_decode($result, true);
+  echo $json->id;
 
 
 ?>

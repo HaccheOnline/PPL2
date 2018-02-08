@@ -36,14 +36,14 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   //echo $json;
   //echo $output;
   $userData = array("username" => "admin@hacche.online", "password" => "mahler13hol");
-  $ch = curl_init("http://ppl2.hacche.online/rest/V1/integration/admin/token");
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($userData));
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json", "Content-Lenght: " . strlen(json_encode($userData))));
+  $ch2 = curl_init("http://ppl2.hacche.online/rest/V1/integration/admin/token");
+  curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch2, CURLOPT_POSTFIELDS, json_encode($userData));
+  curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch2, CURLOPT_HTTPHEADER, array("Content-Type: application/json", "Content-Lenght: " . strlen(json_encode($userData))));
 
-  $token = curl_exec($ch);
-
+  $token = curl_exec($ch2);
+  curl_close($ch2);
 
 
 

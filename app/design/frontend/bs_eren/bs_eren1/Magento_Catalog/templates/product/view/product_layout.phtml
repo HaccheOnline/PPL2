@@ -7,12 +7,19 @@ $tpx_designer_url = $_product->getResource()->getAttribute('tpx_designer_url')->
 <?php if ($tpx_taopix_product == 'Yes'): ?>
 
  <?php
-
+ $om = \Magento\Framework\App\ObjectManager::getInstance();
+ $customerSession = $om->get('Magento\Customer\Model\Session');
+ if($customerSession->isLoggedIn()) {
+     echo   $customerSession->getCustomer()->getId()."<br/>";  // get Customer Id
+     echo   $customerSession->getCustomer()->getName()."<br/>";  // get  Full Name
+     echo   $customerSession->getCustomer()->getEmail()."<br/>"; // get Email Name
+     echo   $customerSession->getCustomer()->getGroupId()."<br/>";  // get Customer Group Id
+   }  
 
  $cookie_name = 'mawdd';
 
 
-$url = 'https://pplcart.hacche.online/?fsaction=OnlineAPI.createProject2&id='. $tpx_designer_url . '&dd=' . $_COOKIE['mawdd'] . '&gwm=1';
+$url = 'https://pplcart.hacche.online/?fsaction=OnlineAPI.createProject2&id='. $tpx_designer_url . '&dd=' . $_COOKIE['mawdd'] . '&gwm=1?customerID=' . $customerSession->getCustomer()->getGroupId();
 //$url2 = 'https://ppl2.hacche.online/personalised-space-hairbrush.html';
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
 //echo $url;
@@ -35,21 +42,8 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   $json = (json_decode($output, true));     
   //echo $json;
   //echo $output;
-  $om = \Magento\Framework\App\ObjectManager::getInstance();
-  $customerSession = $om->get('Magento\Customer\Model\Session');
-  if($customerSession->isLoggedIn()) {
-      echo   $customerSession->getCustomer()->getId()."<br/>";  // get Customer Id
-      echo   $customerSession->getCustomer()->getName()."<br/>";  // get  Full Name
-      echo   $customerSession->getCustomer()->getEmail()."<br/>"; // get Email Name
-      echo   $customerSession->getCustomer()->getGroupId()."<br/>";  // get Customer Group Id
-    }  
  
-    $data = array('customerID' => $customerSession->getCustomer()->getId(), 'php_master' => true);
-    $handle = curl_init('http://pplcart.hacche.online');
-    curl_setopt($handle, CURLOPT_POST, true);
-    curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
-    curl_exec($handle);
-    curl_close($handle)
+ 
 ?>
 
 

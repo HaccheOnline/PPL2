@@ -39,24 +39,10 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 
 
 
-  $ch1 = curl_init('http://ppl2.hacche.online/rest/V1/customers/me');
-curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "GET");
-curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch1, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json'
-));
-curl_setopt($ch1, CURLOPT_COOKIE, 'PHPSESSID=' . $_COOKIE['PHPSESSID']);
-curl_setopt($ch1, CURLOPT_TIMEOUT, 5);
-curl_setopt($ch1, CURLOPT_CONNECTTIMEOUT, 5);
-
-//execute post
-$result = curl_exec($ch1);
-
-//close connection
-curl_close($ch1);
-
-$json1 = json_decode($result);
-echo $json1['id'];
+  if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+    $customerData = Mage::getSingleton('customer/session')->getCustomer();
+     echo $customerData->getId();
+}
 ?>
 
 

@@ -1,39 +1,40 @@
 <?php
-/**
- * @category Taopix
- * @package Integration
- */
 namespace Taopix\Integration\Setup;
-use Magento\Framework\Setup\UpgradeSchemaInterface;
+
+use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-class UpgradeSchema implements UpgradeSchemaInterface
+class InstallSchema implements InstallSchemaInterface
 {
 
-    /**
-     * {@inheritdoc}
-     */
-    public function upgrade(
-        SchemaSetupInterface $setup,
-        ModuleContextInterface $context
-    ) {
-        $installer = $setup;
+/**
+ * {@inheritdoc}
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ */
+public function install(SchemaSetupInterface $setup, ModuleContextInterface    $context)
+  {
+    $installer = $setup;
 
-        $installer->startSetup();
-        if (version_compare($context->getVersion(), '1.0.0', '<')) {
-          $installer->getConnection()->addColumn(
-                $installer->getTable('quote_item'),
-                'taopix_batchref',
-                [
-                    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                    'length' => 50,
-                    'nullable' => true,
-                    'comment' => 'Taopix Batch Reference'
-                ]
-            );
-        }
-        $installer->endSetup();
+    $installer->startSetup();
+
+    $eavTable = $installer->getTable('quote_item');
+
+    $columns = [
+        'taopix_batchref' => [
+            'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            'nullable' => false,
+            'comment' => 'Taopix Batch Referance',
+        ],
+
+    ];
+
+    $connection = $installer->getConnection();
+    foreach ($columns as $name => $definition) {
+        $connection->addColumn($eavTable, $name, $definition);
     }
+
+    $installer->endSetup();
+}
 }
 
  ?>

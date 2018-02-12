@@ -13,7 +13,7 @@
 
 if ($block->getItemsCount()) {
     echo $block->getChildHtml('with-items');
-    echo $_GET;
+    echo $_GET['brandcode'];
 } else {
     echo $block->getChildHtml('no-items');
 }

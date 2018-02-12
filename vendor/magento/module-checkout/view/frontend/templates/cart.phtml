@@ -15,14 +15,17 @@ if ($block->getItemsCount()) {
     echo $block->getChildHtml('with-items');
 
     echo $_GET['batchref'];
+    echo $_GET['projectname'];
     $batchref = $_GET['batchref'];
+    $projectname = $_GET['projectname'];
     $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
     $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
     $connection = $resource->getConnection();
     $tableName = $resource->getTableName('quote_item'); //gives table name with prefix
     $sql = "update " . $tableName . " set taopix_batchref = '". $batchref . "' WHERE quote_id = 1";
+    $sql = "update " . $tableName . " set taopix_projectname = '". $projectname . "' WHERE quote_id = 1";
     $connection->query($sql);
-
+    
 
 
 } else {

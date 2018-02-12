@@ -18,6 +18,13 @@ class UpgradeSchema implements UpgradeSchemaInterface{
  'length' => '50',
  'nullable' => false,
  'comment' => 'Taopix Batch Reference']);
+ $setup->getConnection()->addColumn(
+    $setup->getTable('quote_item'),
+    'taopix_projectname',
+    ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+    'length' => '100',
+    'nullable' => false,
+    'comment' => 'Taopix Project Name']);
  $setup->endSetup();
  } } }
 

@@ -13,6 +13,7 @@
 
 if ($block->getItemsCount()) {
     echo $block->getChildHtml('with-items');
+    echo $_GET;
 } else {
     echo $block->getChildHtml('no-items');
 }

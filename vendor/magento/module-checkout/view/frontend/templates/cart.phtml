@@ -20,7 +20,7 @@ if ($block->getItemsCount()) {
     $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
     $connection = $resource->getConnection();
     $tableName = $resource->getTableName('quote_item'); //gives table name with prefix
-    $sql = "update" . $tableName . " set taopix_batchref ='". $batchref . "' WHERE quote_id = 1";
+    $sql = "update" . $tableName . " set taopix_batchref = '". $batchref . "' WHERE quote_id = 1";
     $connection->query($sql);
 
 

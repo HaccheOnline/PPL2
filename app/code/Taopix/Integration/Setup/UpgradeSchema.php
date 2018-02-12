@@ -15,7 +15,7 @@ class UpgradeSchema implements UpgradeSchemaInterface{
  $setup->getTable('quote_item'),
  'taopix_batchref',
  ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
- 'length' => '20',
+ 'length' => '30',
  'nullable' => false,
  'comment' => 'Taopix Batch Reference']);
  $setup->endSetup();

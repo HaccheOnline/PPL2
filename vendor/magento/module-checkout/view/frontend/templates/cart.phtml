@@ -15,9 +15,9 @@ if ($block->getItemsCount()) {
     echo $block->getChildHtml('with-items');
 
     echo $_GET['batchref'];
-    echo $_GET['[projectname]'];
+    echo $_GET['%5Bprojectname%5D'];
     $batchref = $_GET['batchref'];
-    $projectname = $_GET['[projectname]'];
+    $projectname = $_GET['%5Bprojectname%5D'];
     $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
     $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
     $connection = $resource->getConnection();

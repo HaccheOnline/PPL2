@@ -19,6 +19,7 @@ if(version_compare($context->getVersion(), '1.1.0', '<')) {
  'nullable' => false,
  'comment' => 'Taopix Batch Reference'])
  ->addColumn(
+    $setup->getTable('quote_item'),
     'taopix_projectname',
     ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
     'length' => '100',

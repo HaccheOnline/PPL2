@@ -28,7 +28,7 @@ if(version_compare($context->getVersion(), '1.1.0', '<')) {
                 'length' => 255,
                 'nullable' => false,
                 'comment' => 'Taopix project name')
-            )
+            );
  
 
  $setup->endSetup();

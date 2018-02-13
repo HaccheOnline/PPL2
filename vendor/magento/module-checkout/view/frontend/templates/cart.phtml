@@ -21,7 +21,7 @@ if ($block->getItemsCount()) {
     $tableName = $resource->getTableName('quote_item'); //gives table name with prefix
     $sql = "update " . $tableName . " set taopix_batchref = '". $batchref . "' WHERE quote_id = 1";
     $connection->query($sql);
-    $db = mysqli_connect('185.207.110.230','root','GqsCffwaFfpldsp8','taopixonlineprojects')
+    $db = mysqli_connect('185.207.110.230:3306','root','GqsCffwaFfpldsp8','taopixonlineprojects')
     or die('Error connecting to MySQL server.');
     $query = "SELECT * FROM page_items";
     mysqli_query($db, $query) or die('Error querying database.');

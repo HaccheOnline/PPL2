@@ -12,44 +12,20 @@ class UpgradeSchema implements UpgradeSchemaInterface{
 if(version_compare($context->getVersion(), '1.1.0', '<')) {
  $setup->startSetup();
  $setup->getConnection()
-/*  $setup->getTable('quote_item'),
-    'taopix_batchref',
-    array(
-        'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-        'length' => 50,
-        'nullable' => false,
-        'comment' => 'Taopix Batch Reference')
-    )
  ->addColumn(
     $setup->getTable('quote_item'),
-        'taopix_projectname',
-            array(
-                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                'length' => 255,
-                'nullable' => false,
-                'comment' => 'Taopix project name')
-            );
- 
- */
-
-->addColumn($setup->getTable('quote_item'),
-'taopix_batchref',
-array(
-    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-    'length' => 50,
+    'taopix_batchref',
+    ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+    'length' => '50',
     'nullable' => false,
-    'comment' => 'Taopix Batch Reference'
-)
-)
-->addColumn($setup->getTable('quote_item'),
-'taopix_projectname',
-array(
-    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-    'length' => 255,
+    'comment' => 'taopix batch reference'])
+ ->addColumn(
+    $setup->getTable('quote_item'),
+    'taopix_projectname',
+    ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+    'length' => '255',
     'nullable' => false,
-    'comment' => 'Taopix project name'
-)
-);
+    'comment' => 'taopix project name']);
  $setup->endSetup();
  } } }
 

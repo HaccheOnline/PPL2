@@ -21,6 +21,13 @@ return array (
         'password' => 'Gaesh2ea',
         'active' => '1',
       ),
+      'custom' => array (
+        'host' => '185.207.110.230',
+        'dbname' => 'taopixonlineprojects',
+        'username' => 'root',
+        'password' => 'GqsCffwaFfpldsp8',
+        'active' => '1',
+      ),
     ),
   ),
   'resource' => 
@@ -29,6 +36,10 @@ return array (
     array (
       'connection' => 'default',
     ),
+    'custom' =>
+   array (
+     'connection' => 'custom',
+   ),
   ),
   'x-frame-options' => 'SAMEORIGIN',
   'MAGE_MODE' => 'developer',

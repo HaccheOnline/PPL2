@@ -13,18 +13,23 @@ if(version_compare($context->getVersion(), '1.1.0', '<')) {
  $setup->startSetup();
  $setup->getConnection()->addColumn(
  $setup->getTable('quote_item'),
- 'taopix_batchref',
- ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
- 'length' => '50',
- 'nullable' => false,
- 'comment' => 'Taopix Batch Reference'])
+    'taopix_batchref',
+    array(
+        'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+        'length' => 50,
+        'nullable' => false,
+        'comment' => 'Taopix Batch Reference')
+    )
  ->addColumn(
     $setup->getTable('quote_item'),
-    'taopix_projectname',
-    ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-    'length' => '100',
-    'nullable' => false,
-    'comment' => 'Taopix Project Name']);
+        'taopix_projectname',
+            array(
+                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                'length' => 255,
+                'nullable' => false,
+                'comment' => 'Taopix project name')
+            )
+ 
 
  $setup->endSetup();
  } } }

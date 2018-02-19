@@ -81,12 +81,14 @@ $response = curl_exec($ch);
 curl_close($ch);
  
 //Do whatever you want to do with the output.
-console.log($response);
+//echo $response;
 
       
 ?>
 
-
+<script>
+console.log(<?php echo $response ?>);
+</script>
 
 
 <center><a id='personalised' href='<?php echo $json['designurl']?>'>Personalise Now</a></center>

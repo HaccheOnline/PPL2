@@ -37,9 +37,53 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   //echo $json;
   //echo $output;
 
+  $om = \Magento\Framework\App\ObjectManager::getInstance();
+    $customerSession = $om->get('Magento\Customer\Model\Session');
+    if($customerSession->isLoggedIn()) {
+       $customerID = $customerSession->getCustomer()->getId();  // get Customer Id
+    }  
+
+    //The names of the POST variables that we want to send
+//to the external website.
+$postVars = array('id');
  
+//An array to hold the data that we'll end up sending. 
+//Empty by default.
+$postData = array();
+ 
+//Attemp to find the POST variables that we want to send.
+foreach($postVars as $id){
+    if(isset($_POST[$id])){
+        $postData[$id] = $_POST[$id];
+    }
+}
+ 
+//Setup cURL
+$ch = curl_init();
+ 
+//The site we'll be sending the POST data to.
+curl_setopt($ch, CURLOPT_URL, "https://pplcart.hacche.online");
+ 
+//Tell cURL that we want to send a POST request.
+curl_setopt($ch, CURLOPT_POST, 1);
+ 
+//Attach our POST data.
+curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+ 
+//Tell cURL that we want to receive the response that the site
+//gives us after it receives our request.
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+ 
+//Finally, send the request.
+$response = curl_exec($ch);
+ 
+//Close the cURL session
+curl_close($ch);
+ 
+//Do whatever you want to do with the output.
+echo $response;
 
-
+      
 ?>
 
 

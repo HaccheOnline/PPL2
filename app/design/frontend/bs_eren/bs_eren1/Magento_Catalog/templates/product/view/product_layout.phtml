@@ -16,7 +16,7 @@ $tpx_designer_url = $_product->getResource()->getAttribute('tpx_designer_url')->
        $customerID = $customerSession->getCustomer()->getId();  // get Customer Id
     }  
 
-$url = 'https://pplcart.hacche.online/?fsaction=OnlineAPI.createProject2&id='. $tpx_designer_url . '&dd=' . $_COOKIE['mawdd'] . '&gwm=1&customer=' . $customerID;
+$url = 'https://pplcart.hacche.online/?fsaction=OnlineAPI.createProject2&id='. $tpx_designer_url . '&dd=' . $_COOKIE['mawdd'] . '&gwm=1&customerid=' . $customerID;
 //$url2 = 'https://ppl2.hacche.online/personalised-space-hairbrush.html';
 //echo $url;
 $userAgent = $_SERVER['HTTP_USER_AGENT'];

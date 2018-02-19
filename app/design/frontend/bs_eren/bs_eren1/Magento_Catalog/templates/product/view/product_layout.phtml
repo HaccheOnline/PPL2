@@ -10,7 +10,11 @@ $tpx_designer_url = $_product->getResource()->getAttribute('tpx_designer_url')->
 
 
  $cookie_name = 'mawdd';
-
+ $om = \Magento\Framework\App\ObjectManager::getInstance();
+    $customerSession = $om->get('Magento\Customer\Model\Session');
+    if($customerSession->isLoggedIn()) {
+       $customerID = $customerSession->getCustomer()->getId();  // get Customer Id
+    }  
 
 $url = 'https://pplcart.hacche.online/?fsaction=OnlineAPI.createProject2&id='. $tpx_designer_url . '&dd=' . $_COOKIE['mawdd'] . '&gwm=1&customer=' . $customerID;
 //$url2 = 'https://ppl2.hacche.online/personalised-space-hairbrush.html';
@@ -37,11 +41,7 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   //echo $json;
   //echo $output;
 
-  $om = \Magento\Framework\App\ObjectManager::getInstance();
-    $customerSession = $om->get('Magento\Customer\Model\Session');
-    if($customerSession->isLoggedIn()) {
-       $customerID = $customerSession->getCustomer()->getId();  // get Customer Id
-    }  
+ 
 
    
 ?>

@@ -24,7 +24,7 @@ if ($block->getItemsCount()) {
     $om = \Magento\Framework\App\ObjectManager::getInstance();
     $customerSession = $om->get('Magento\Customer\Model\Session');
     if($customerSession->isLoggedIn()) {
-        echo   $customerSession->getCustomer()->getId()."<br/>";  // get Customer Id
+        echo   "<br/>".$customerSession->getCustomer()->getId()."<br/>";  // get Customer Id
     }  
 
 

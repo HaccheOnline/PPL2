@@ -41,7 +41,7 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
   //echo $json;
   //echo $output;
 
-  $ch = curl_init('http://ppl2.hacche.online/rest/V1/customers/me');
+  $ch = curl_init('http://ppl2.hacche.online/rest/V1/customers/1');
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_HTTPHEADER, array(
